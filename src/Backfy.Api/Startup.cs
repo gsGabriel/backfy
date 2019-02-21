@@ -1,6 +1,7 @@
 ﻿using Backfy.Api.SwaggerConfig;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -9,7 +10,6 @@ using Microsoft.Extensions.PlatformAbstractions;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.IO;
 using System.Reflection;
-using static Microsoft.AspNetCore.Mvc.CompatibilityVersion;
 
 namespace Backfy.Api
 {
@@ -39,34 +39,23 @@ namespace Backfy.Api
         /// <param name="services">The collection of services to configure the application with.</param>
         public void ConfigureServices(IServiceCollection services)
         {
-            // the sample application always uses the latest version, but you may want an explicit version such as Version_2_2
-            // note: Endpoint Routing is enabled by default; however, if you need legacy style routing via IRouter, change it to false
-            services.AddMvc(options => options.EnableEndpointRouting = true).SetCompatibilityVersion(Latest);
+            services.AddMvc(options => options.EnableEndpointRouting = true).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddApiVersioning(
                 options =>
                 {
-                    // reporting api versions will return the headers "api-supported-versions" and "api-deprecated-versions"
                     options.ReportApiVersions = true;
                 });
             services.AddVersionedApiExplorer(
                 options =>
                 {
-                    // add the versioned api explorer, which also adds IApiVersionDescriptionProvider service
-                    // note: the specified format code will format the version as "'v'major[.minor][-status]"
                     options.GroupNameFormat = "'v'VVV";
-
-                    // note: this option is only necessary when versioning by url segment. the SubstitutionFormat
-                    // can also be used to control the format of the API version in route templates
                     options.SubstituteApiVersionInUrl = true;
                 });
             services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
             services.AddSwaggerGen(
                 options =>
                 {
-                    // add a custom operation filter which sets default values
                     options.OperationFilter<SwaggerDefaultValues>();
-
-                    // integrate xml comments
                     options.IncludeXmlComments(XmlCommentsFilePath);
                 });
         }

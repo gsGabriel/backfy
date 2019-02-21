@@ -22,24 +22,23 @@ namespace Backfy.Api.SwaggerConfig
         public ConfigureSwaggerOptions( IApiVersionDescriptionProvider provider ) => this.provider = provider;
 
         /// <inheritdoc />
-        public void Configure( SwaggerGenOptions options )
+        public void Configure(SwaggerGenOptions options)
         {
             // add a swagger document for each discovered API version
-            // note: you might choose to skip or document deprecated API versions differently
             foreach ( var description in provider.ApiVersionDescriptions )
             {
                 options.SwaggerDoc( description.GroupName, CreateInfoForApiVersion( description ) );
             }
         }
 
-        static Info CreateInfoForApiVersion( ApiVersionDescription description )
+        static Info CreateInfoForApiVersion(ApiVersionDescription description)
         {
             var info = new Info()
             {
-                Title = "Sample API",
+                Title = "Backfy API",
                 Version = description.ApiVersion.ToString(),
-                Description = "A sample application with Swagger, Swashbuckle, and API versioning.",
-                Contact = new Contact() { Name = "Bill Mei", Email = "bill.mei@somewhere.com" },
+                Description = "",
+                Contact = new Contact() { Name = "Gabriel César", Email = "gs.gabrielcfa@outlook.com" },
                 TermsOfService = "Shareware",
                 License = new License() { Name = "MIT", Url = "https://opensource.org/licenses/MIT" }
             };
