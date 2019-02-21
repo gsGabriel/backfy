@@ -1,4 +1,5 @@
-﻿using Backfy.Api.SwaggerConfig;
+﻿using Backfy.Api.Extensions;
+using Backfy.Api.SwaggerConfig;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -58,6 +59,8 @@ namespace Backfy.Api
                     options.OperationFilter<SwaggerDefaultValues>();
                     options.IncludeXmlComments(XmlCommentsFilePath);
                 });
+
+            services.AddMediatR();
         }
 
         /// <summary>
@@ -81,6 +84,9 @@ namespace Backfy.Api
                 });
         }
 
+        /// <summary>
+        /// Get a current file path for xml comments
+        /// </summary>
         static string XmlCommentsFilePath
         {
             get
