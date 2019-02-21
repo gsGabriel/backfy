@@ -2,7 +2,7 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/.vs/backfy/v15
 /.vs
-/src/Backfy.Api/bin/Debug
-/src/Backfy.Api/obj
+bin
+obj
+packages
