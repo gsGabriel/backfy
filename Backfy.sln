@@ -29,9 +29,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backfy.Sales.Repository", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backfy.Sales.Repository.Tests", "test\Sales\Backfy.Sales.Repository.Tests\Backfy.Sales.Repository.Tests.csproj", "{1165F7DE-EAA8-4767-BF7A-0637189FC0EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backfy.Sales.Command", "src\Sales\Backfy.Sales.Command\Backfy.Sales.Command.csproj", "{9BA03C4B-DD73-489B-960B-5864DBAE42B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backfy.Sales.Command", "src\Sales\Backfy.Sales.Command\Backfy.Sales.Command.csproj", "{9BA03C4B-DD73-489B-960B-5864DBAE42B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backfy.Sales.Command.Tests", "test\Sales\Backfy.Sales.Command.Tests\Backfy.Sales.Command.Tests.csproj", "{DBD38107-0D1B-4C21-B566-7891466E8CD2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backfy.Sales.Command.Tests", "test\Sales\Backfy.Sales.Command.Tests\Backfy.Sales.Command.Tests.csproj", "{DBD38107-0D1B-4C21-B566-7891466E8CD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backfy.Common.Infra", "src\Backfy.Common.Infra\Backfy.Common.Infra.csproj", "{D603A28E-0F94-4B51-A91A-30A16643CB2C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,6 +85,10 @@ Global
 		{DBD38107-0D1B-4C21-B566-7891466E8CD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBD38107-0D1B-4C21-B566-7891466E8CD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBD38107-0D1B-4C21-B566-7891466E8CD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D603A28E-0F94-4B51-A91A-30A16643CB2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D603A28E-0F94-4B51-A91A-30A16643CB2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D603A28E-0F94-4B51-A91A-30A16643CB2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D603A28E-0F94-4B51-A91A-30A16643CB2C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -100,6 +106,7 @@ Global
 		{1165F7DE-EAA8-4767-BF7A-0637189FC0EE} = {CD0BFB7D-B16A-420F-894A-8173B55C834D}
 		{9BA03C4B-DD73-489B-960B-5864DBAE42B2} = {CD0BFB7D-B16A-420F-894A-8173B55C834D}
 		{DBD38107-0D1B-4C21-B566-7891466E8CD2} = {CD0BFB7D-B16A-420F-894A-8173B55C834D}
+		{D603A28E-0F94-4B51-A91A-30A16643CB2C} = {871C4BA1-F058-404A-988D-3F16B236B890}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9BCF3900-C8C1-40C9-BFA3-3686B59B55BB}
