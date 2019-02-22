@@ -1,5 +1,6 @@
 ﻿using Backfy.Common.Infra.Services.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Backfy.Common.Infra.Services.Interfaces
 {
@@ -15,6 +16,6 @@ namespace Backfy.Common.Infra.Services.Interfaces
         /// <param name="limit">limit of requested result</param>
         /// <param name="offset">offset of requested result</param>
         /// <returns>The requested albums</returns>
-        IEnumerable<SpotifyAlbums> GetAlbums(string query, int limit, int offset);
+        Task<IEnumerable<SpotifyAlbums>> GetAlbumsAsync(string query, int limit, int offset);
     }
 }
