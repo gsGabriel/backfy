@@ -1,4 +1,5 @@
 ﻿using Backfy.Albums.Query.Result;
+using Backfy.Common.Infra.Helpers;
 using Backfy.Common.Infra.Services.Interfaces;
 using MediatR;
 using System;
@@ -29,7 +30,7 @@ namespace Backfy.Albums.Query.Handler
         {
             var album = await spotifyService.GetAlbumAsync(request.Id);
 
-            return await Task.FromResult(new GetAlbumQueryResult(album.Id, album.Name, album.ReleaseDate, album.TotalTracks, 10));
+            return await Task.FromResult(new GetAlbumQueryResult(album.Id, album.Name, album.ReleaseDate, album.TotalTracks, RandomPricesHelper.GetPrice()));
         }
     }
 }

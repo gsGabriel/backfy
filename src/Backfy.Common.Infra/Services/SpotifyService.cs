@@ -46,6 +46,10 @@ namespace Backfy.Common.Infra.Services
             return albums.Select(x => new SpotifyAlbum { Id = x.id, Name = x.name, ReleaseDate = x.release_date, TotalTracks = x.total_tracks }).ToList();
         }
 
+        /// <summary>
+        /// Get token to authenticate in spotify api 
+        /// </summary>
+        /// <returns>The token requested</returns>
         private async Task<dynamic> GetToken()
         {
             string credentials = String.Format("{0}:{1}", clientId, clientSecret);
