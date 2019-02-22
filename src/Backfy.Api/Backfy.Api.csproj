@@ -23,4 +23,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Albums\Backfy.Albums.Query\Backfy.Albums.Query.csproj" />
+    <ProjectReference Include="..\Sales\Backfy.Sales.Query\Backfy.Sales.Query.csproj" />
+  </ItemGroup>
+
 </Project>

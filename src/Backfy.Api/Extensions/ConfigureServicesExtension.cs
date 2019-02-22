@@ -1,8 +1,9 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Backfy.Albums.Query.Handler;
+using Backfy.Common.Infra.Services;
+using Backfy.Common.Infra.Services.Interfaces;
+using Backfy.Sales.Query.Handler;
+using MediatR;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Backfy.Api.Extensions
 {
@@ -18,8 +19,10 @@ namespace Backfy.Api.Extensions
         /// <returns></returns>
         public static IServiceCollection AddMediatR(this IServiceCollection services)
         {
-            //TODO: Referenciar assembly dos handlers
-            //services.AddMediatR(typeof(GetTodoQueryHandler).Assembly);
+            services.AddMediatR(typeof(GetAlbumQueryHandler).Assembly);
+            services.AddMediatR(typeof(GetSaleQueryHandler).Assembly);
+
+            services.AddTransient<ISpotifyService>(x => new SpotifyService("c8e8a0d059ee431d943dc5dba1bfbde0", "9972bc2d6c674ab48a3a5a74262b451c"));
 
             return services;
         }

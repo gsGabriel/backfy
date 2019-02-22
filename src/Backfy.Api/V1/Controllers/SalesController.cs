@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
 namespace Backfy.Api.V1.Controllers
@@ -12,6 +13,17 @@ namespace Backfy.Api.V1.Controllers
     [Produces("application/json")]
     public class SalesController : ControllerBase
     {
+        private readonly IMediator mediator;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SalesController"/> class.
+        /// </summary>
+        /// <param name="mediator">The mediator dependecy</param>
+        public SalesController(IMediator mediator)
+        {
+            this.mediator = mediator;
+        }
+
         /// <summary>
         /// Retrieves a requested sales
         /// </summary>
