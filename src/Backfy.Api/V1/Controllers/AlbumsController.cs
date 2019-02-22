@@ -30,11 +30,14 @@ namespace Backfy.Api.V1.Controllers
         /// <summary>
         /// Retrieves a requested albums
         /// </summary>
+        /// <param name="genre">The request genre name</param>
+        /// <param name="skip">The request skip</param>
+        /// <param name="take">The request take</param>
         /// <returns>The requested albums</returns>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IEnumerable<GetPaginatedAlbumsQueryResult>> Get(string genre, int skip, int take)
         {
-            return new string[] { "value1", "value2" };
+            return await mediator.Send(new GetPaginatedAlbumsQuery(genre, skip, take));
         }
 
         /// <summary>
@@ -43,7 +46,7 @@ namespace Backfy.Api.V1.Controllers
         /// <param name="id">The request album identifier</param>
         /// <returns>The requested album</returns>
         [HttpGet("{id}")]
-        public async Task<ActionResult<GetAlbumQueryResult>> Get(string id)
+        public async Task<GetAlbumQueryResult> Get(string id)
         {
             return await mediator.Send(new GetAlbumQuery(id));
         }

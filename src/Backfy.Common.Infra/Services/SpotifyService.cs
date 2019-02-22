@@ -32,18 +32,14 @@ namespace Backfy.Common.Infra.Services
         /// <inheritdoc />
         public async Task<SpotifyAlbum> GetAlbumAsync(string id)
         {
-            IDictionary<string, object> result = await AlbumAsync(id);
-            
-            return new SpotifyAlbum { Id = result["id"].ToString(), Name = result["name"].ToString(), ReleaseDate = result["release_date"].ToString(), TotalTracks = int.Parse(result["total_tracks"].ToString()) };
+            return await AlbumAsync(id);
         }
 
         /// <inheritdoc />
         public async Task<IEnumerable<SpotifyAlbum>> GetAlbumsAsync(string query, int limit, int offset)
         {
             var result = await SearchAsync(query, "album", limit, offset);
-            IEnumerable<dynamic> albums = result.albums.items;
-
-            return albums.Select(x => new SpotifyAlbum { Id = x.id, Name = x.name, ReleaseDate = x.release_date, TotalTracks = x.total_tracks }).ToList();
+            return result.Albums.Items;
         }
 
         /// <summary>
@@ -81,7 +77,7 @@ namespace Backfy.Common.Infra.Services
         /// </summary>
         /// <param name="id">The identifier of album</param>
         /// <returns>Task with dynamic object requested</returns>
-        private async Task<dynamic> AlbumAsync(string id)
+        private async Task<SpotifyAlbum> AlbumAsync(string id)
         {
             try
             {
@@ -90,7 +86,7 @@ namespace Backfy.Common.Infra.Services
                 return await uriApiSpotify
                     .AppendPathSegment($"albums/{id}")
                     .WithOAuthBearerToken((string)token.access_token)
-                    .GetJsonAsync();
+                    .GetJsonAsync<SpotifyAlbum>();
             }
             catch (FlurlHttpException ex)
             {
@@ -111,7 +107,7 @@ namespace Backfy.Common.Infra.Services
         /// <param name="limit">The limit request</param>
         /// <param name="offset">The offset request</param>
         /// <returns>Task with dynamic object requested</returns>
-        private async Task<dynamic> SearchAsync(string query, string type, int limit, int offset)
+        private async Task<SpotifySearchItem> SearchAsync(string query, string type, int limit, int offset)
         {
             try
             {
@@ -119,9 +115,9 @@ namespace Backfy.Common.Infra.Services
 
                 return await uriApiSpotify
                     .AppendPathSegment("search")
-                    .SetQueryParams($"q={query}&type={type}&market=from_token&limit={limit}&offset={1}")
+                    .SetQueryParams($"q={query}&type={type}&market=BR&limit={limit}&offset={1}")
                     .WithOAuthBearerToken((string)token.access_token)
-                    .GetJsonAsync<dynamic>();
+                    .GetJsonAsync<SpotifySearchItem>();
             }
             catch (FlurlHttpException ex)
             {
