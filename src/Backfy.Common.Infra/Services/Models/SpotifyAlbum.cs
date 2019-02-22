@@ -2,7 +2,7 @@
 
 namespace Backfy.Common.Infra.Services.Models
 {
-    public class SpotifyAlbums
+    public class SpotifyAlbum
     {
         public string Id { get; set; }
         public string Name { get; set; }
