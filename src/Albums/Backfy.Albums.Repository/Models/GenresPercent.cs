@@ -1,4 +1,4 @@
-﻿using Backfy.Albums.Repository.Enums;
+﻿using Backfy.Common.Infra.Enums;
 using System;
 
 namespace Backfy.Albums.Repository.Models

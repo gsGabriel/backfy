@@ -1,6 +1,6 @@
-﻿using Backfy.Albums.Repository.Enums;
-using Backfy.Albums.Repository.Interfaces;
+﻿using Backfy.Albums.Repository.Interfaces;
 using Backfy.Albums.Repository.Models;
+using Backfy.Common.Infra.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;

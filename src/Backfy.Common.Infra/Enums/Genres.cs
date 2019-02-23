@@ -1,4 +1,4 @@
-﻿namespace Backfy.Albums.Repository.Enums
+﻿namespace Backfy.Common.Infra.Enums
 {
     public enum Genres
     {
