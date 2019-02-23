@@ -8,7 +8,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.PlatformAbstractions;
+using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using System;
 using System.IO;
 using System.Reflection;
 
@@ -56,6 +58,9 @@ namespace Backfy.Api
             services.AddSwaggerGen(
                 options =>
                 {
+                    //Add support for a uuid params
+                    options.MapType<Guid>(() => new Schema { Type = "string", Format = "uuid" });
+
                     options.OperationFilter<SwaggerDefaultValues>();
                     options.IncludeXmlComments(XmlCommentsFilePath);
                 });
