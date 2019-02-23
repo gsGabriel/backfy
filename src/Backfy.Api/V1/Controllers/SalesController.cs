@@ -1,6 +1,10 @@
-﻿using MediatR;
+﻿using Backfy.Sales.Query;
+using Backfy.Sales.Query.Result;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Backfy.Api.V1.Controllers
 {
@@ -29,9 +33,9 @@ namespace Backfy.Api.V1.Controllers
         /// </summary>
         /// <returns>The requested sales</returns>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IEnumerable<GetPaginatedSalesQueryResult>> Get(DateTime? startDate, DateTime? endDate, int skip, int take)
         {
-            return new string[] { "value1", "value2" };
+            return await mediator.Send(new GetPaginatedSalesQuery(startDate, endDate, skip, take));
         }
 
         /// <summary>
@@ -40,9 +44,9 @@ namespace Backfy.Api.V1.Controllers
         /// <param name="id">The request sale id</param>
         /// <returns>The requested sale</returns>
         [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        public async Task<GetSaleQueryResult> Get(Guid id)
         {
-            return "value";
+            return await mediator.Send(new GetSaleQuery(id));
         }
 
         /// <summary>
