@@ -4,7 +4,7 @@ using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace Backfy.Api.SwaggerConfig
+namespace Backfy.Api.Swagger
 {
     /// <summary>
     /// Configures the Swagger generation options.

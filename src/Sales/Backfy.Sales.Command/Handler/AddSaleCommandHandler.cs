@@ -17,7 +17,7 @@ namespace Backfy.Sales.Command.Handler
         /// <param name="request">The request with filter params</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns>The task with the result of Sale</returns>
-        public Task<AddSaleCommandResult> HandleAsync(AddSaleCommand request, CancellationToken cancellationToken)
+        public Task<AddSaleCommandResult> Handle(AddSaleCommand request, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }

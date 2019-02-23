@@ -39,7 +39,7 @@ namespace Backfy.Common.Infra.Services
         public async Task<IEnumerable<SpotifyAlbum>> GetAlbumsAsync(string query, int limit, int offset)
         {
             var result = await SearchAsync(query, "album", limit, offset);
-            return result.Albums.Items;
+            return result?.Albums?.Items;
         }
 
         /// <summary>

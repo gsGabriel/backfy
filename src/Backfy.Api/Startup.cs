@@ -1,5 +1,5 @@
 ﻿using Backfy.Api.Extensions;
-using Backfy.Api.SwaggerConfig;
+using Backfy.Api.Swagger;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;

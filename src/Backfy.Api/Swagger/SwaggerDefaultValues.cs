@@ -3,7 +3,7 @@ using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Linq;
 
-namespace Backfy.Api.SwaggerConfig
+namespace Backfy.Api.Swagger
 {
     /// <summary>
     /// Represents the Swagger/Swashbuckle operation filter used to document the implicit API version parameter.
