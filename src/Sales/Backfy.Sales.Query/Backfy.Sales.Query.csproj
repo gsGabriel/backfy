@@ -9,7 +9,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Albums\Backfy.Albums.Repository\Backfy.Albums.Repository.csproj" />
     <ProjectReference Include="..\..\Backfy.Common.Infra\Backfy.Common.Infra.csproj" />
+    <ProjectReference Include="..\Backfy.Sales.Repository\Backfy.Sales.Repository.csproj" />
   </ItemGroup>
 
 </Project>

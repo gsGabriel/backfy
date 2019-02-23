@@ -1,5 +1,5 @@
-using Backfy.Albums.Repository.Enums;
 using Backfy.Albums.Repository.Interfaces;
+using Backfy.Common.Infra.Enums;
 using System;
 using Xunit;
 using Xunit.Frameworks.Autofac;

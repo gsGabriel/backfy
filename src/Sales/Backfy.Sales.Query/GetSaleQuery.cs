@@ -1,5 +1,6 @@
 ﻿using Backfy.Sales.Query.Result;
 using MediatR;
+using System;
 
 namespace Backfy.Sales.Query
 {
@@ -12,7 +13,7 @@ namespace Backfy.Sales.Query
         /// Get a specified Sale
         /// </summary>
         /// <param name="id">The identifier of Sale</param>
-        public GetSaleQuery(string id)
+        public GetSaleQuery(Guid id)
         {
             Id = id;
         }
@@ -20,6 +21,6 @@ namespace Backfy.Sales.Query
         /// <summary>
         /// The identifier of Sale
         /// </summary>
-        public string Id { get; }
+        public Guid Id { get; }
     }
 }
