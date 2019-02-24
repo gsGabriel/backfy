@@ -1,4 +1,6 @@
-﻿using Backfy.Sales.Query;
+﻿using Backfy.Sales.Command;
+using Backfy.Sales.Command.Result;
+using Backfy.Sales.Query;
 using Backfy.Sales.Query.Result;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -43,7 +45,7 @@ namespace Backfy.Api.V1.Controllers
         /// </summary>
         /// <param name="id">The request sale id</param>
         /// <returns>The requested sale</returns>
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("{id}")]
         public async Task<GetSaleQueryResult> Get(Guid id)
         {
             return await mediator.Send(new GetSaleQuery(id));
@@ -52,10 +54,12 @@ namespace Backfy.Api.V1.Controllers
         /// <summary>
         /// Places a new sale
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="command">The new sale</param>
+        /// <returns>Return the sale resume</returns>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<AddSaleCommandResult> Post([FromBody] AddSaleCommand command)
         {
+            return await mediator.Send(command);
         }
     }
 }

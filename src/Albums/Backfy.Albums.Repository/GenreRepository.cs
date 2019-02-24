@@ -53,7 +53,7 @@ namespace Backfy.Albums.Repository
 
         public GenresPercent GetPercent(string genre, DayOfWeek dayOfWeek)
         {
-            return genresPercents.SingleOrDefault(x => x.Genre.ToString().Contains(genre) && x.DayOfWeek == dayOfWeek);
+            return genresPercents.SingleOrDefault(x => x.Genre.ToString().ToLower().Contains(genre.ToLower()) && x.DayOfWeek == dayOfWeek);
         }
     }
 }

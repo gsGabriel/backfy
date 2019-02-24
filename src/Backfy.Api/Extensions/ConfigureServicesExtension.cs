@@ -29,8 +29,8 @@ namespace Backfy.Api.Extensions
             services.AddMediatR(typeof(AddSaleCommandHandler).Assembly);
 
             services.AddTransient<ISpotifyService>(x => new SpotifyService("c8e8a0d059ee431d943dc5dba1bfbde0", "9972bc2d6c674ab48a3a5a74262b451c"));
-            services.AddTransient<IGenreRepository, GenreRepository>();
-            services.AddTransient<ISaleRepository, SaleRepository>();
+            services.AddSingleton<IGenreRepository, GenreRepository>();
+            services.AddSingleton<ISaleRepository, SaleRepository>();
 
             return services;
         }

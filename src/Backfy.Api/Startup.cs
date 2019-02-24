@@ -1,4 +1,5 @@
-﻿using Backfy.Api.Extensions;
+﻿using Backfy.Albums.Query;
+using Backfy.Api.Extensions;
 using Backfy.Api.Swagger;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -62,7 +63,10 @@ namespace Backfy.Api
                     options.MapType<Guid>(() => new Schema { Type = "string", Format = "uuid" });
 
                     options.OperationFilter<SwaggerDefaultValues>();
-                    options.IncludeXmlComments(XmlCommentsFilePath);
+
+                    options.IncludeXmlComments(GetXmlCommentPath(Assembly.GetExecutingAssembly().GetName().Name));
+                    options.IncludeXmlComments(GetXmlCommentPath(typeof(GetAlbumQuery).GetTypeInfo().Assembly.GetName().Name));
+                    options.IncludeXmlComments(GetXmlCommentPath(typeof(GetAlbumQuery).GetTypeInfo().Assembly.GetName().Name));
                 });
 
             services.AddMediatR();
@@ -89,17 +93,12 @@ namespace Backfy.Api
                 });
         }
 
+
         /// <summary>
-        /// Get a current file path for xml comments
+        /// Helper to get a xml comment path
         /// </summary>
-        static string XmlCommentsFilePath
-        {
-            get
-            {
-                var basePath = PlatformServices.Default.Application.ApplicationBasePath;
-                var fileName = typeof(Startup).GetTypeInfo().Assembly.GetName().Name + ".xml";
-                return Path.Combine(basePath, fileName);
-            }
-        }
+        /// <param name="assemblyName">Name of assembly</param>
+        /// <returns>The path of xml comment</returns>
+        private static string GetXmlCommentPath(string assemblyName) => Path.Combine(AppContext.BaseDirectory, assemblyName + ".xml");
     }
 }
