@@ -36,10 +36,20 @@ namespace Backfy.Sales.Query.Handler
         /// <returns>The task with the requested Sale</returns>
         public Task<GetSaleQueryResult> Handle(GetSaleQuery request, CancellationToken cancellationToken)
         {
+            BusinessValidation(request);
+
             var sale = saleRepository.GetSale(request.Id);
 
             return Task.FromResult(new GetSaleQueryResult(sale.Id, sale.DateSale, sale.Albums
                 .Select(x => new GetSaleAlbumsQueryResult(x.Id, x.Price, GetCashback(sale.DateSale, x.Genre, x.Price))).ToArray()));
+        }
+
+        private void BusinessValidation(GetSaleQuery request)
+        {
+            if(request.Id == Guid.Empty)
+            {
+                throw new Exception("Id inválido");
+            }
         }
 
         private decimal GetCashback(DateTime dateSale, string genre, decimal price)
