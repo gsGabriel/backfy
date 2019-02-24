@@ -1,4 +1,5 @@
 ﻿using Backfy.Albums.Query;
+using Backfy.Api.Configs;
 using Backfy.Api.Extensions;
 using Backfy.Api.Swagger;
 using Microsoft.AspNetCore.Builder;
@@ -8,7 +9,6 @@ using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using Microsoft.Extensions.PlatformAbstractions;
 using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System;
@@ -68,6 +68,8 @@ namespace Backfy.Api
                     options.IncludeXmlComments(GetXmlCommentPath(typeof(GetAlbumQuery).GetTypeInfo().Assembly.GetName().Name));
                     options.IncludeXmlComments(GetXmlCommentPath(typeof(GetAlbumQuery).GetTypeInfo().Assembly.GetName().Name));
                 });
+
+            services.Configure<SpotifySettings>(Configuration.GetSection("Spotify"));
 
             services.AddMediatR();
         }
