@@ -28,7 +28,7 @@ namespace Backfy.Sales.Command.Handler
             this.saleRepository = saleRepository;
             this.genreRepository = genreRepository;
         }
-
+        
         /// <summary>
         /// The handle to add a Sale
         /// </summary>
@@ -37,11 +37,19 @@ namespace Backfy.Sales.Command.Handler
         /// <returns>The task with the result of Sale</returns>
         public Task<AddSaleCommandResult> Handle(AddSaleCommand request, CancellationToken cancellationToken)
         {
+            BusinessValidation(request);
+
             var sale = new Sale(request.Albums.Select(x => new SaleAlbum(x.Id, x.Genre, x.Price)));
             var idSale = saleRepository.SaveSale(sale);
 
             return Task.FromResult(new AddSaleCommandResult(sale.Id, sale.DateSale, sale.Albums
                 .Select(y => new AddSaleAlbumsCommandResult(y.Id, y.Price, GetCashback(sale.DateSale, y.Genre, y.Price))).ToArray()));
+        }
+
+        private void BusinessValidation(AddSaleCommand request)
+        {
+            if (request.Albums == null || !request.Albums.Any())
+                throw new Exception("Não é possível realizar a venda sem nenhum disco selecionado");
         }
 
         private decimal GetCashback(DateTime dateSale, string genre, decimal price)
