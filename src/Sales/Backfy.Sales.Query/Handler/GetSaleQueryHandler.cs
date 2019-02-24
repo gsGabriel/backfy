@@ -17,6 +17,11 @@ namespace Backfy.Sales.Query.Handler
         private readonly ISaleRepository saleRepository;
         private readonly IGenreRepository genreRepository;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GetSaleQueryHandler"/> class.
+        /// </summary>
+        /// <param name="saleRepository"></param>
+        /// <param name="genreRepository"></param>
         public GetSaleQueryHandler(ISaleRepository saleRepository, IGenreRepository genreRepository)
         {
             this.saleRepository = saleRepository;

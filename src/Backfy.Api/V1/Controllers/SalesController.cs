@@ -36,8 +36,8 @@ namespace Backfy.Api.V1.Controllers
         /// </summary>
         /// <param name="startDate">The start date range for date sale</param>
         /// <param name="endDate">The end date range for date sale</param>
-        /// <param name="skip">The skip value</param>
-        /// <param name="take">The take value</param>
+        /// <param name="skip">The actual page</param>
+        /// <param name="take">The number of elements to take</param>
         /// <returns>The requested sales</returns>
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<GetPaginatedSalesQueryResult>), 200)]

@@ -12,10 +12,10 @@ namespace Backfy.Sales.Query
     public class GetPaginatedSalesQuery : PaginationQuery, IRequest<IEnumerable<GetPaginatedSalesQueryResult>>
     {
         /// <summary>
-        /// Get a Sales by filter and pagination
+        /// Initializes a new instance of the <see cref="GetPaginatedSalesQuery"/> class.
         /// </summary>
-        /// <param name="startDate">The start date filter</param>
-        /// <param name="endDate">The end date filter</param>
+        /// <param name="startDate">The start date range for date sale</param>
+        /// <param name="endDate">The end date range for date sale</param>
         /// <param name="skip">The actual page</param>
         /// <param name="take">The number of elements to take</param>
         public GetPaginatedSalesQuery(DateTime? startDate, DateTime? endDate, int skip, int take)
@@ -27,12 +27,12 @@ namespace Backfy.Sales.Query
         }
 
         /// <summary>
-        /// The start date filter
+        /// The start date range for date sale
         /// </summary>
         public DateTime? StartDate { get; }
-        
+
         /// <summary>
-        /// The end date filter
+        /// The end date range for date sale
         /// </summary>
         public DateTime? EndDate { get; }
     }

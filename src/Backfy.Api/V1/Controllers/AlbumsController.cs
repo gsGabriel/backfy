@@ -2,9 +2,7 @@
 using Backfy.Albums.Query.Result;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Net;
 using System.Threading.Tasks;
 
 namespace Backfy.Api.V1.Controllers
@@ -34,8 +32,8 @@ namespace Backfy.Api.V1.Controllers
         /// Retrieves a requested albums
         /// </summary>
         /// <param name="genre">The genre name</param>
-        /// <param name="skip">The skip value</param>
-        /// <param name="take">The take value</param>
+        /// <param name="skip">The actual page</param>
+        /// <param name="take">The number of elements to take</param>
         /// <returns>The requested albums</returns>
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<GetPaginatedAlbumsQueryResult>), 200)]

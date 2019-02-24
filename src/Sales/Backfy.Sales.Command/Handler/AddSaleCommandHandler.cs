@@ -18,6 +18,11 @@ namespace Backfy.Sales.Command.Handler
         private readonly ISaleRepository saleRepository;
         private readonly IGenreRepository genreRepository;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AddSaleCommandHandler"/> class.
+        /// </summary>
+        /// <param name="saleRepository"></param>
+        /// <param name="genreRepository"></param>
         public AddSaleCommandHandler(ISaleRepository saleRepository, IGenreRepository genreRepository)
         {
             this.saleRepository = saleRepository;

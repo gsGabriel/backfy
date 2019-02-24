@@ -10,7 +10,7 @@ namespace Backfy.Sales.Query
     public class GetSaleQuery : IRequest<GetSaleQueryResult>
     {
         /// <summary>
-        /// Get a specified Sale
+        /// Initializes a new instance of the <see cref="GetSaleQuery"/> class.
         /// </summary>
         /// <param name="id">The identifier of Sale</param>
         public GetSaleQuery(Guid id)
