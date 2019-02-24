@@ -16,7 +16,7 @@ Essas são as instruções para executar a aplicação sem a dependêcia do visu
 
 #### Executando com DockerFile
 
-Para executar a aplicação utilizando o dockerfile execute os comandos abaixo na raiz da solução
+Para executar a aplicação utilizando o dockerfile execute os comandos abaixo na raiz do repositório
 
 ```shell
 docker build -t backfy/api .
@@ -31,7 +31,7 @@ docker run -d -p 88:80 backfy/api
 
 #### Executando com dotnet CLI
 
-Para executar a aplicação utilizando o .net core cli execute os comandos abaixos na raiz da solução
+Para executar a aplicação utilizando o .net core cli execute os comandos abaixos na raiz do repositório
 
 ```shell
 cd src\Backfy.Api
@@ -51,7 +51,7 @@ A aplicação está documentada seguindo a especificação do Swagger, os testes
 
 #### Executando com dotnet CLI
 
-Para executar a aplicação utilizando o .net core cli execute os comandos abaixos na raiz da solução
+Para executar a aplicação utilizando o .net core cli execute os comandos abaixos na raiz do repositório
 
 ```shell
 cd test
