@@ -7,10 +7,14 @@ using System.Linq;
 
 namespace Backfy.Albums.Repository
 {
+    /// <inheritdoc />
     public class GenreRepository : IGenreRepository
     {
         private readonly IEnumerable<GenresPercent> genresPercents;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GenreRepository"/> class.
+        /// </summary>
         public GenreRepository()
         {
             genresPercents = new List<GenresPercent>
@@ -46,11 +50,13 @@ namespace Backfy.Albums.Repository
             };
         }
 
+        /// <inheritdoc />
         public IEnumerable<GenresPercent> GetAllPercents()
         {
             return genresPercents.ToList();
         }
 
+        /// <inheritdoc />
         public GenresPercent GetPercent(string genre, DayOfWeek dayOfWeek)
         {
             return genresPercents.SingleOrDefault(x => x.Genre.ToString().ToLower().Contains(genre.ToLower()) && x.DayOfWeek == dayOfWeek);

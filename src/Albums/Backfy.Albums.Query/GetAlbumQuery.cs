@@ -9,7 +9,7 @@ namespace Backfy.Albums.Query
     public class GetAlbumQuery : IRequest<GetAlbumQueryResult>
     {
         /// <summary>
-        /// Get a specified album
+        /// Initializes a new instance of the <see cref="GetAlbumQuery"/> class.
         /// </summary>
         /// <param name="id">The identifier of album</param>
         public GetAlbumQuery(string id)

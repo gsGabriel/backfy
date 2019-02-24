@@ -15,6 +15,10 @@ namespace Backfy.Albums.Query.Handler
     {
         private readonly ISpotifyService spotifyService;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GetAlbumQueryHandler"/> class.
+        /// </summary>
+        /// <param name="spotifyService">The spotify service depencency</param>
         public GetAlbumQueryHandler(ISpotifyService spotifyService)
         {
             this.spotifyService = spotifyService;

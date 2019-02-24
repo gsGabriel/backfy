@@ -11,9 +11,9 @@ namespace Backfy.Albums.Query
     public class GetPaginatedAlbumsQuery : PaginationQuery, IRequest<IEnumerable<GetPaginatedAlbumsQueryResult>>
     {
         /// <summary>
-        /// Get a albums by filter and pagination
+        /// Initializes a new instance of the <see cref="GetPaginatedAlbumsQuery"/> class.
         /// </summary>
-        /// <param name="genre">The genre filter</param>
+        /// <param name="genre">The genre name</param>
         /// <param name="skip">The actual page</param>
         /// <param name="take">The number of elements to take</param>
         public GetPaginatedAlbumsQuery(string genre, int skip, int take)
@@ -24,7 +24,7 @@ namespace Backfy.Albums.Query
         }
 
         /// <summary>
-        /// The genre filter
+        /// The genre name
         /// </summary>
         public string Genre { get; }
     }
