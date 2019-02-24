@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  backfy.api:
+    image: ${DOCKER_REGISTRY-}backfyapi
+    build:
+      context: .
+      dockerfile: src/Backfy.Api/Dockerfile
