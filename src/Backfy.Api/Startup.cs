@@ -1,6 +1,7 @@
 ﻿using Backfy.Albums.Query;
 using Backfy.Api.Configs;
 using Backfy.Api.Extensions;
+using Backfy.Api.Filters;
 using Backfy.Api.Swagger;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -43,7 +44,12 @@ namespace Backfy.Api
         /// <param name="services">The collection of services to configure the application with.</param>
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc(options => options.EnableEndpointRouting = true).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc(options => 
+            {
+                options.EnableEndpointRouting = true;
+                options.Filters.Add(new ExceptionFilter());
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
             services.AddApiVersioning(
                 options =>
                 {
