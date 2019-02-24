@@ -13,9 +13,7 @@ using System.Threading.Tasks;
 
 namespace Backfy.Common.Infra.Services
 {
-    /// <summary>
-    /// The sportify service integration
-    /// </summary>
+    /// <inheritdoc />
     public class SpotifyService : ISpotifyService
     {
         private readonly string uriApiSpotify = "https://api.spotify.com/v1/";
