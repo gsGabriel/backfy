@@ -8,6 +8,17 @@ Músicas + dinheiro de volta :D
 
 Essas são as instruções para executar a aplicação sem a dependêcia do visual studio.
 
+### Configuração da aplicação
+
+Devido a dependência com o spotify, é necesário realizar a configuração do clientId e do clientSecret, para isso é necessário ir no diretorio src\Backfy.Api\ e alterar o arquivo appsettings.json. Segue um exemplo do código com a configuração.
+
+```json
+"Spotify": {
+    "clientId": "<clientid>",
+    "clientSecret": "<clientsecret>"
+  },
+```
+
 ### Pré-Requisitos docker
 
 É necessário ter o docker instalado e rodando em sua máquina, caso não tenha siga as instruções contidas no link abaixo
