@@ -6,20 +6,26 @@ using System.Linq;
 
 namespace Backfy.Sales.Repository
 {
+    /// <inheritdoc />
     public class SaleRepository : ISaleRepository
     {
         private static List<Sale> Sales { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SaleRepository"/> class.
+        /// </summary>
         public SaleRepository()
         {
             Sales = new List<Sale>();
         }
-        
+
+        /// <inheritdoc />
         public Sale GetSale(Guid id)
         {
             return Sales.Single(x => x.Id == id);
         }
 
+        /// <inheritdoc />
         public IEnumerable<Sale> GetPagedSales(DateTime? startDate, DateTime? endDate, int skip, int take)
         {
             return Sales
@@ -30,6 +36,7 @@ namespace Backfy.Sales.Repository
                 .Take(take);
         }
 
+        /// <inheritdoc />
         public Guid SaveSale(Sale sale)
         {
             Sales.Add(sale);

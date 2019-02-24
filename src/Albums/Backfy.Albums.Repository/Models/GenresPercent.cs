@@ -4,7 +4,7 @@ using System;
 namespace Backfy.Albums.Repository.Models
 {
     /// <summary>
-    /// The association between genres and percentages of cashback
+    /// The representation of association between genres and percentages of cashback
     /// </summary>
     public class GenresPercent
     {
