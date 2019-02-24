@@ -16,7 +16,7 @@ namespace Backfy.Common.Infra.Services.Interfaces
         /// <param name="limit">limit of requested result</param>
         /// <param name="offset">offset of requested result</param>
         /// <returns>The requested albums</returns>
-        Task<IEnumerable<SpotifyAlbum>> GetAlbumsAsync(string query, int limit, int offset);
+        Task<SpotifyPaging<SpotifyAlbum>> GetAlbumsAsync(string query, int limit, int offset);
 
         /// <summary>
         /// Get a specified album

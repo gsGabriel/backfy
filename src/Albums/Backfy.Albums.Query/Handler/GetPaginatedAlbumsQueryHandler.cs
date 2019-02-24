@@ -1,5 +1,6 @@
 ﻿using Backfy.Albums.Query.Result;
 using Backfy.Common.Infra.Helpers;
+using Backfy.Common.Infra.Pagination;
 using Backfy.Common.Infra.Services.Interfaces;
 using MediatR;
 using System;
@@ -13,7 +14,7 @@ namespace Backfy.Albums.Query.Handler
     /// <summary>
     /// QueryHandler to get a albums by filter and pagination
     /// </summary>
-    public class GetPaginatedAlbumsQueryHandler : IRequestHandler<GetPaginatedAlbumsQuery, IEnumerable<GetPaginatedAlbumsQueryResult>>
+    public class GetPaginatedAlbumsQueryHandler : IRequestHandler<GetPaginatedAlbumsQuery, PaginationQueryResult<GetPaginatedAlbumsQueryResult>>
     {
         private readonly ISpotifyService spotifyService;
 
@@ -32,13 +33,15 @@ namespace Backfy.Albums.Query.Handler
         /// <param name="request">The request with filter and pagination params</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns>The task with the requested albums</returns>
-        public async Task<IEnumerable<GetPaginatedAlbumsQueryResult>> Handle(GetPaginatedAlbumsQuery request, CancellationToken cancellationToken)
+        public async Task<PaginationQueryResult<GetPaginatedAlbumsQueryResult>> Handle(GetPaginatedAlbumsQuery request, CancellationToken cancellationToken)
         {
             var offset = (request.Skip * request.Take) + 1;
             var albums = await spotifyService.GetAlbumsAsync(request.Genre, request.Take, offset);
             cancellationToken.ThrowIfCancellationRequested();
 
-            return await Task.FromResult(albums.Select(x => new GetPaginatedAlbumsQueryResult(x.Id, x.Name, x.ReleaseDate, x.TotalTracks, RandomPricesHelper.GetPrice())).OrderBy(x => x.Name));
+            var result = albums.Items?.Select(x => new GetPaginatedAlbumsQueryResult(x.Id, x.Name, x.ReleaseDate, x.TotalTracks, RandomPricesHelper.GetPrice())).OrderBy(x => x.Name);
+
+            return await Task.FromResult(new PaginationQueryResult<GetPaginatedAlbumsQueryResult>(result.ToArray(), albums.Total));
         }
     }
 }

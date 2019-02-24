@@ -10,6 +10,11 @@ namespace Backfy.Sales.Repository.Interfaces
     public interface ISaleRepository
     {
         /// <summary>
+        /// Get actual count of sales
+        /// </summary>
+        int Count { get; }
+
+        /// <summary>
         /// Get a specified sale
         /// </summary>
         /// <param name="id">The identifier of sale</param>

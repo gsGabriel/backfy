@@ -1,4 +1,5 @@
 ﻿using Backfy.Albums.Repository.Interfaces;
+using Backfy.Common.Infra.Pagination;
 using Backfy.Sales.Query.Result;
 using Backfy.Sales.Repository.Interfaces;
 using MediatR;
@@ -13,7 +14,7 @@ namespace Backfy.Sales.Query.Handler
     /// <summary>
     /// QueryHandler to get a Sales by filter and pagination
     /// </summary>
-    public class GetPaginatedSalesQueryHandler : IRequestHandler<GetPaginatedSalesQuery, IEnumerable<GetPaginatedSalesQueryResult>>
+    public class GetPaginatedSalesQueryHandler : IRequestHandler<GetPaginatedSalesQuery, PaginationQueryResult<GetPaginatedSalesQueryResult>>
     {
         private readonly ISaleRepository saleRepository;
         private readonly IGenreRepository genreRepository;
@@ -35,12 +36,14 @@ namespace Backfy.Sales.Query.Handler
         /// <param name="request">The request with filter and pagination params</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <returns>The task with the requested Sales</returns>
-        public Task<IEnumerable<GetPaginatedSalesQueryResult>> Handle(GetPaginatedSalesQuery request, CancellationToken cancellationToken)
+        public Task<PaginationQueryResult<GetPaginatedSalesQueryResult>> Handle(GetPaginatedSalesQuery request, CancellationToken cancellationToken)
         {
             var sales = saleRepository.GetPagedSales(request.StartDate, request.EndDate, request.Skip, request.Take);
 
-            return Task.FromResult(sales.Select(x => new GetPaginatedSalesQueryResult(x.Id, x.DateSale, x.Albums
-                .Select(y => new GetPaginatedSalesAlbumsQueryResult(y.Id, y.Price, GetCashback(x.DateSale, y.Genre, y.Price))).ToArray())));
+            var result = sales.Select(x => new GetPaginatedSalesQueryResult(x.Id, x.DateSale, x.Albums
+                .Select(y => new GetPaginatedSalesAlbumsQueryResult(y.Id, y.Price, GetCashback(x.DateSale, y.Genre, y.Price))).ToArray())).OrderByDescending(x => x.DateSale);
+
+            return Task.FromResult(new PaginationQueryResult<GetPaginatedSalesQueryResult>(result.ToArray(), saleRepository.Count));
         }
 
         private decimal GetCashback(DateTime dateSale, string genre, decimal price)

@@ -11,6 +11,8 @@ namespace Backfy.Sales.Repository
     {
         private static List<Sale> Sales { get; set; }
 
+        public int Count => Sales.Count();
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SaleRepository"/> class.
         /// </summary>
@@ -33,7 +35,8 @@ namespace Backfy.Sales.Repository
                 .Where(x => !endDate.HasValue || x.DateSale <= endDate.Value)
                 .OrderByDescending(x => x.DateSale)
                 .Skip(skip)
-                .Take(take);
+                .Take(take)
+                .ToArray();
         }
 
         /// <inheritdoc />

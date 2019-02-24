@@ -34,10 +34,10 @@ namespace Backfy.Common.Infra.Services
         }
 
         /// <inheritdoc />
-        public async Task<IEnumerable<SpotifyAlbum>> GetAlbumsAsync(string query, int limit, int offset)
+        public async Task<SpotifyPaging<SpotifyAlbum>> GetAlbumsAsync(string query, int limit, int offset)
         {
             var result = await SearchAsync(query, "album", limit, offset);
-            return result?.Albums?.Items;
+            return result?.Albums;
         }
 
         /// <summary>

@@ -1,5 +1,6 @@
 ﻿using Backfy.Albums.Query;
 using Backfy.Albums.Query.Result;
+using Backfy.Common.Infra.Pagination;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -36,8 +37,8 @@ namespace Backfy.Api.V1.Controllers
         /// <param name="take">The number of elements to take</param>
         /// <returns>The requested albums</returns>
         [HttpGet]
-        [ProducesResponseType(typeof(IEnumerable<GetPaginatedAlbumsQueryResult>), 200)]
-        public async Task<IEnumerable<GetPaginatedAlbumsQueryResult>> Get(string genre, int skip, int take)
+        [ProducesResponseType(typeof(PaginationQueryResult<GetPaginatedAlbumsQueryResult>), 200)]
+        public async Task<PaginationQueryResult<GetPaginatedAlbumsQueryResult>> Get(string genre, int skip, int take)
         {
             return await mediator.Send(new GetPaginatedAlbumsQuery(genre, skip, take));
         }
