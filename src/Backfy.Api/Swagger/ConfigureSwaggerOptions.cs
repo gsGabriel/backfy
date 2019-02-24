@@ -37,7 +37,7 @@ namespace Backfy.Api.Swagger
             {
                 Title = "Backfy API",
                 Version = description.ApiVersion.ToString(),
-                Description = "Api desenvolvida como teste no processo seletivo da Beblue",
+                Description = "Api developed for the technical challenge proposed by Beblue",
                 Contact = new Contact() { Name = "Gabriel César", Email = "gs.gabrielcfa@outlook.com", Url = "https://github.com/gsGabriel" }
             };
 
