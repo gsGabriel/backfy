@@ -32,9 +32,17 @@ namespace Backfy.Albums.Query.Handler
         /// <returns>The task with the requested album</returns>
         public async Task<GetAlbumQueryResult> Handle(GetAlbumQuery request, CancellationToken cancellationToken)
         {
+            BusinessValidation(request);
+
             var album = await spotifyService.GetAlbumAsync(request.Id);
 
             return await Task.FromResult(new GetAlbumQueryResult(album.Id, album.Name, album.ReleaseDate, album.TotalTracks, RandomPricesHelper.GetPrice()));
+        }
+
+        private void BusinessValidation(GetAlbumQuery request)
+        {
+            if (string.IsNullOrEmpty(request?.Id))
+                throw new Exception("Id inválido");
         }
     }
 }

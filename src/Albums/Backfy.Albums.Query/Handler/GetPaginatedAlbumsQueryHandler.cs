@@ -39,6 +39,8 @@ namespace Backfy.Albums.Query.Handler
             var albums = await spotifyService.GetAlbumsAsync(request.Genre, request.Take, offset);
             cancellationToken.ThrowIfCancellationRequested();
 
+            if(albums == null) return default;
+
             var result = albums.Items?.Select(x => new GetPaginatedAlbumsQueryResult(x.Id, x.Name, x.ReleaseDate, x.TotalTracks, RandomPricesHelper.GetPrice())).OrderBy(x => x.Name);
 
             return await Task.FromResult(new PaginatedQueryResult<GetPaginatedAlbumsQueryResult>(result.ToArray(), albums.Total));
