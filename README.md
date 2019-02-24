@@ -1,4 +1,6 @@
-# backfy
+# Backfy
+
+[![Build status](https://ci.appveyor.com/api/projects/status/vjta45h76s70l2mg?svg=true)](https://ci.appveyor.com/project/gsGabriel/backfy)
 
 Músicas + dinheiro de volta :D
 
