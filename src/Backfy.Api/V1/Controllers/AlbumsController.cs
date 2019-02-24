@@ -33,9 +33,9 @@ namespace Backfy.Api.V1.Controllers
         /// <summary>
         /// Retrieves a requested albums
         /// </summary>
-        /// <param name="genre">The request genre name</param>
-        /// <param name="skip">The request skip</param>
-        /// <param name="take">The request take</param>
+        /// <param name="genre">The genre name</param>
+        /// <param name="skip">The skip value</param>
+        /// <param name="take">The take value</param>
         /// <returns>The requested albums</returns>
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<GetPaginatedAlbumsQueryResult>), 200)]

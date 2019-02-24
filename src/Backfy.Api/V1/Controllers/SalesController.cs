@@ -13,7 +13,6 @@ namespace Backfy.Api.V1.Controllers
     /// <summary>
     /// Represents a RESTful service of sales.
     /// </summary>
-    /// <response code="400" cref="ProblemDetails">Bad Request</response>
     [ApiController]
     [ApiVersion("1.0")]
     [Route("api/[controller]")]
@@ -35,6 +34,10 @@ namespace Backfy.Api.V1.Controllers
         /// <summary>
         /// Retrieves a requested sales
         /// </summary>
+        /// <param name="startDate">The start date range for date sale</param>
+        /// <param name="endDate">The end date range for date sale</param>
+        /// <param name="skip">The skip value</param>
+        /// <param name="take">The take value</param>
         /// <returns>The requested sales</returns>
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<GetPaginatedSalesQueryResult>), 200)]
@@ -58,8 +61,8 @@ namespace Backfy.Api.V1.Controllers
         /// <summary>
         /// Places a new sale
         /// </summary>
-        /// <param name="command">The new sale</param>
-        /// <returns>Return the sale resume</returns>
+        /// <param name="command" cref="AddSaleCommand">The new sale</param>
+        /// <returns>Return the sale with cashback</returns>
         [HttpPost]
         [ProducesResponseType(typeof(AddSaleCommandResult), 200)]
         public async Task<AddSaleCommandResult> Post([FromBody] AddSaleCommand command)

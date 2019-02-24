@@ -23,7 +23,7 @@ namespace Backfy.Api.Extensions
         /// Configure assembly for MediatR
         /// </summary>
         /// <param name="services">The collection of services to configure the application with</param>
-        /// <returns></returns>
+        /// <returns>The service of application</returns>
         public static IServiceCollection AddMediatR(this IServiceCollection services)
         {
             services.AddMediatR(typeof(GetAlbumQueryHandler).Assembly);
