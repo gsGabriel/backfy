@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Albums\Backfy.Albums.Query\Backfy.Albums.Query.csproj" />
+    <ProjectReference Include="..\Sales\Backfy.Sales.Command\Backfy.Sales.Command.csproj" />
     <ProjectReference Include="..\Sales\Backfy.Sales.Query\Backfy.Sales.Query.csproj" />
   </ItemGroup>
 

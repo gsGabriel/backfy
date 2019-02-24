@@ -8,4 +8,9 @@
     <PackageReference Include="MediatR" Version="6.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Albums\Backfy.Albums.Repository\Backfy.Albums.Repository.csproj" />
+    <ProjectReference Include="..\Backfy.Sales.Repository\Backfy.Sales.Repository.csproj" />
+  </ItemGroup>
+
 </Project>
