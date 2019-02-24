@@ -11,6 +11,7 @@ function dotnet-build {
   } else {
     dotnet build -c Release
   }
+  Pop-Location
 }
 
 @( "dotnet-build" ) | ForEach-Object {
