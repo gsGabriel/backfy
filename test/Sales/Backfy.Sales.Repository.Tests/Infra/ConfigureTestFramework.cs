@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Backfy.Sales.Repository.Interfaces;
 using Xunit;
 using Xunit.Abstractions;
 using Xunit.Frameworks.Autofac;
@@ -15,7 +16,7 @@ namespace Backfy.Sales.Repository.Tests.Infra
 
         protected override void ConfigureContainer(ContainerBuilder builder)
         {
-            
+            builder.RegisterType<SaleRepository>().As<ISaleRepository>().InstancePerTest();
         }
     }
 }
