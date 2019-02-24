@@ -8,7 +8,7 @@ namespace Backfy.Albums.Query
     /// <summary>
     /// Query to get a albums by filter and pagination
     /// </summary>
-    public class GetPaginatedAlbumsQuery : PaginationQuery, IRequest<PaginationQueryResult<GetPaginatedAlbumsQueryResult>>
+    public class GetPaginatedAlbumsQuery : PaginationQuery, IRequest<PaginatedQueryResult<GetPaginatedAlbumsQueryResult>>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="GetPaginatedAlbumsQuery"/> class.

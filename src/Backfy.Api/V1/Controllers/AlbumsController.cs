@@ -37,8 +37,8 @@ namespace Backfy.Api.V1.Controllers
         /// <param name="take">The number of elements to take</param>
         /// <returns>The requested albums</returns>
         [HttpGet]
-        [ProducesResponseType(typeof(PaginationQueryResult<GetPaginatedAlbumsQueryResult>), 200)]
-        public async Task<PaginationQueryResult<GetPaginatedAlbumsQueryResult>> Get(string genre, int skip, int take)
+        [ProducesResponseType(typeof(PaginatedQueryResult<GetPaginatedAlbumsQueryResult>), 200)]
+        public async Task<PaginatedQueryResult<GetPaginatedAlbumsQueryResult>> Get(string genre, int skip, int take)
         {
             return await mediator.Send(new GetPaginatedAlbumsQuery(genre, skip, take));
         }

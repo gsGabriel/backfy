@@ -9,7 +9,7 @@ namespace Backfy.Sales.Query
     /// <summary>
     /// Query to get a Sales by filter and pagination
     /// </summary>
-    public class GetPaginatedSalesQuery : PaginationQuery, IRequest<PaginationQueryResult<GetPaginatedSalesQueryResult>>
+    public class GetPaginatedSalesQuery : PaginationQuery, IRequest<PaginatedQueryResult<GetPaginatedSalesQueryResult>>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="GetPaginatedSalesQuery"/> class.

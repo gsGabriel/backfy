@@ -41,8 +41,8 @@ namespace Backfy.Api.V1.Controllers
         /// <param name="take">The number of elements to take</param>
         /// <returns>The requested sales</returns>
         [HttpGet]
-        [ProducesResponseType(typeof(PaginationQueryResult<GetPaginatedSalesQueryResult>), 200)]
-        public async Task<PaginationQueryResult<GetPaginatedSalesQueryResult>> Get(DateTime? startDate, DateTime? endDate, int skip, int take)
+        [ProducesResponseType(typeof(PaginatedQueryResult<GetPaginatedSalesQueryResult>), 200)]
+        public async Task<PaginatedQueryResult<GetPaginatedSalesQueryResult>> Get(DateTime? startDate, DateTime? endDate, int skip, int take)
         {
             return await mediator.Send(new GetPaginatedSalesQuery(startDate, endDate, skip, take));
         }
