@@ -5,13 +5,11 @@ if ($env:APPVEYOR -eq "True" -and $env:APPVEYOR_REPO_TAG -eq "false") {
 }
 
 function dotnet-build {
-  Push-Location src/Backfy.Api/
   if ($VersionSuffix.Length -gt 0) {
-    dotnet build -c Release --version-suffix $VersionSuffix
+    dotnet build backfy.sln -c Release --version-suffix $VersionSuffix
   } else {
-    dotnet build -c Release
+    dotnet build backfy.sln -c Release
   }
-  Pop-Location
 }
 
 @( "dotnet-build" ) | ForEach-Object {

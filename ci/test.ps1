@@ -1,10 +1,6 @@
 function dotnet-test {
   Push-Location test
-  Get-ChildItem -Path ".\" -Directory -Recurse -Filter "*.Tests" | ForEach-Object {
-    dotnet restore $_
-    dotnet test $_ -c Release --no-build
-    if ($LastExitCode -ne 0) { Exit $LastExitCode }
-  }
+  ForEach ($folder in (Get-ChildItem -Path ".\" -Directory -Recurse -Filter "*.Tests")) {dotnet test $folder.FullName -c Release --no-build }
   Pop-Location
 }
 
