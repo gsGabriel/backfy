@@ -23,6 +23,20 @@ docker build -t backfy/api .
 docker run -d -p 88:80 backfy/api
 ```
 
+### Pré-Requisitos Docker-Compose
+
+É necessário ter o docker-compose instalado, caso não tenha siga as instruções contidas no link abaixo
+
+* [Instalação](https://docs.docker.com/compose/install/)
+
+#### Executando com Docker-Compose
+
+Para executar a aplicação utilizando o compose execute os comandos abaixo na raiz do repositório
+
+```shell
+ddocker-compose up
+```
+
 ### Pré-Requisitos dotnet CLI
 
 É necessário ter o .net core 2.2 SDK instalado em sua máquina, caso não tenha siga as instruções contidas no link abaixo
